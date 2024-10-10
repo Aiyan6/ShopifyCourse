@@ -1,27 +1,59 @@
-<h1>{{ section.settings.title}}</h1>
-<p>{{ section.settings.subtext }}</p>
+<div class="max-w-md">
+  <div class="text-5xl font-bold my-4">{{ section.settings.title }}</div>
+  <div class="my-4">
+    <p class="text-base md:text-xl leading-normal">{{ section.settings.subtext }}</p>
+  </div>
+  <div class="my-4">
+    {% if section.settings.button_url == blank %}
+      {% assign shop_url = shop.secure_url %}
+
+    {% else %}
+      {% assign shop_url = section.settings.button_url %}
+    {% endif %}
+
+    <a
+      href="{{ shop_url }}"
+      class="px-4 inline py-2 text-base font-medium shadow bg-green-600 hover:bg-green-800 text-white"
+    >
+      {{- section.settings.button_label -}}
+    </a>
+  </div>
+</div>
 
 {% schema %}
 {
-    "name": "404 Page",
-    "settings": [
+  "name": "404 Page",
+  "tag": "section",
+  "class": "flex items-center justify-center text-center py-7 h-screen",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "404 Title",
+      "default": "404",
+      "info": "Heading for the 404 page"
+    },
 
-        {
-            "type": "text",
-            "id": "title",
-            "label": "404 Title",
-            "default": "404",
-            "info": "Heading for the 404 page"
-        },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "404 Subtext",
+      "default": "The page does not exist",
+      "info": "Subtext for the 404 page"
+    },
 
-        {
-            "type": "text",
-            "id": "subtext",
-            "label": "404 Subtext",
-            "default": "The page does not exist",
-            "info": "Subtext for the 404 page"
-        }
-    ]
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Back to homepage",
+      "label": "Button Label"
+    },
+
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
 }
-
 {% endschema %}
