@@ -1,0 +1,41 @@
+{% paginate blog.articles by section.settings.number_of_articles %}
+    {% for article in blog.articles %}
+        <div>
+            {% if article.image %}
+                <img src="{{ article.image | image_url }}" alt="{{ article.image.alt }}" width="200px" height="200px">
+            {% else %}
+                {{ 'image' | placeholder_svg_tag:"w-20" }}
+            {% endif %}
+            <h1>{{ article.title }}</h1>
+
+            {% if article.exerpt.size > 0 %}
+
+            {% else %}
+                <p>{{ article.content | strip_html | truncatewords: 15 }}</p>
+   
+            {% endif %} 
+            
+        </div>
+
+
+        
+    {% endfor %}
+{% endpaginate %}
+
+
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "range",
+        "id": "number_of_articles",
+        "label": "Number of articles",
+        "step": 1,
+        "min": 1,
+        "max": 6,
+        "default": 3
+      },
+    ]
+  }
+{% endschema %}
