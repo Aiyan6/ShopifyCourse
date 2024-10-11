@@ -3,22 +3,20 @@
     "template": {
       "type": "template-cart",
       "blocks": {
-        
-          "subtotal": {
-            "type": "subtotal"
-          },
+        "subtotal": {
+          "type": "subtotal"
+        },
 
-          "update": {
-            "type": "update_button"
-          },
+        "update": {
+          "type": "update_button"
+        },
 
-          "checkout": {
-            "type": "checkout_button"
-          }
+        "checkout": {
+          "type": "checkout_button"
+        }
       },
-      "block_order": ["subtotal", "update_button", "checkout_button"]
+      "block_order": ["subtotal", "update", "checkout"]
     }
-
   },
   "order": ["template"]
 }
