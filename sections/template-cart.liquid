@@ -89,3 +89,33 @@
     </div>
   </div>
 {% endif %}
+
+
+{% schema %}
+  {
+    "name": "Template Cart",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "type": "subtotal",
+        "name": "Subtotal",
+        "limit": 1
+      },
+
+      {
+        "type": "update_button",
+        "name": "Update button",
+        "limit": 1
+      },
+      
+      {
+        "type": "checkout_button",
+        "name": "Checkout button",
+        "limit": 1,
+      }
+    ]
+    
+  }
+{% endschema %}
