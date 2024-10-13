@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    {% render 'pagination', pagination: paginate %}
+    {% render 'pagination', pagination: paginate, display_vendor: section.settings.display_vendor %}
   {% endpaginate %}
 </div>
 
@@ -25,6 +25,13 @@
       "id": "number_of_products_per_page",
       "default": 6,
       "label": "Number of products per page"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "display_vendor",
+      "default": true,
+      "label": "Display vendor"
     }
   ]
 }
