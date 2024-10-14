@@ -1,4 +1,4 @@
-{% for product in collection.products %}
+{% for product in section.settings.collection %}
   {% render 'product-card', product_product: product %}
 {% else %}
   <p>There are no products inside this collection</p>
