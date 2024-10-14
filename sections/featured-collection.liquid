@@ -1,0 +1,26 @@
+{% for product in section.settings.featured_collection %}
+    {% render 'product-card', product_product: product %}
+    
+{% endfor %}
+
+{% schema %}
+    {
+        "name": "Featured Collection",
+        "settings": [
+            {
+                "type": "text",
+                "id": "collection_title",
+                "default": "Featured Collection",
+                "label": "Title"
+            
+            },
+
+            {
+                "type": "collection",
+                "id": "featured_collection",
+                "default": "",
+                "label": "Collection"
+            }
+        ]
+    }
+{% endschema %}
