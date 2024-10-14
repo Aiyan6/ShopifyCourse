@@ -4,5 +4,5 @@
             "type": "template-list-collections"
         }
     },
-    "order": ["template-list-collections"]
+    "order": ["template"]
 }
