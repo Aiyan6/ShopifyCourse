@@ -1,25 +1,52 @@
-{% for product in section.settings.featured_collection %}
-    {% render 'product-card', product_product: product %}
-    
-{% endfor %}
-
-{% schema %}
-    {
-        "name": "Featured Collection",
-        "settings": [
-            {
-                "type": "text",
-                "id": "collection_title",
-                "default": "Featured Collection",
-                "label": "Title"
-            
-            },
-
-            {
-                "type": "collection",
-                "id": "featured_collection",
-                "label": "Collection"
-            }
-        ]
-    }
-{% endschema %}
+<div class="px-4 py-8">
+    {% if section.settings.collection %}
+      {% assign collection = collections[section.settings.collection] %}
+      
+      {% if collection.products.size > 0 %}
+        {% paginate collection.products by section.settings.number_of_products_per_page %}
+          <h1 class="text-3xl text-center">{{ collection.title }}</h1>
+  
+          <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {% for product in collection.products %}
+                {% render 'product-card', product_product: product, display_vendor: section.settings.display_vendor %}
+              {% else %}
+                <p>There are no products inside this collection</p>
+              {% endfor %}
+            </div>
+          </div>
+  
+          {% render 'pagination', pagination: paginate %}
+        {% endpaginate %}
+      {% else %}
+        <p>There are no products in this collection.</p>
+      {% endif %}
+    {% else %}
+      <p>No collection selected.</p>
+    {% endif %}
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Featured Collection",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select collection"
+      },
+      {
+        "type": "number",
+        "id": "number_of_products_per_page",
+        "default": 6,
+        "label": "Number of products per page"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_vendor",
+        "default": true,
+        "label": "Display vendor"
+      }
+    ]
+  }
+  {% endschema %}
