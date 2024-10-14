@@ -8,7 +8,7 @@
       <div class="border p-5">
         <div class="flex flex-row items-center w-full my-3">
           <div class="text-red-500">
-            {% render 'icon-failed' %}
+            {% render 'failed-icon' %}
           </div>
           <div class="text-sm font-medium ml-3">Oh no! Your message is not sent</div>
         </div>
@@ -23,7 +23,7 @@
     {% elsif form.posted_successfully? %}
       <div class="flex flex-row items-center w-full my-3 p-5">
         <div class="text-green-500">
-          {% render 'icon-success' %}
+          {% render 'success-icon' %}
         </div>
         <div class="text-sm font-medium ml-3">Your message is sent successfully</div>
       </div>
