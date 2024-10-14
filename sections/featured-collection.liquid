@@ -1,12 +1,9 @@
-{% if section.settings.collection %}
-  {% assign collection = collections[section.settings.collection] %}
+{% assign collection_handle = section.settings.featured_collection | default: 'all' %}
+{% assign collection = collections[collection_handle] %}
 
-  {% for product in collection.products %}
-    {% render 'product-card', product_product: product %}
-  {% else %}
-    <p>There are no products inside this collection</p>
-  {% endfor %}
-{% endif %}
+{% for product in collection.products %}
+  {% render 'product-card', product_product: product %}
+{% endfor %}
 
 {% schema %}
 {
@@ -14,7 +11,7 @@
   "settings": [
     {
       "type": "collection",
-      "id": "collection",
+      "id": "featured_collection",
       "label": "Select collection"
     }
   ]
