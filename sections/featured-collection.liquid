@@ -1,8 +1,12 @@
-{% for product in section.settings.collection %}
-  {% render 'product-card', product_product: product %}
-{% else %}
-  <p>There are no products inside this collection</p>
-{% endfor %}
+{% if section.settings.collection %}
+  {% assign collection = collections[section.settings.collection] %}
+
+  {% for product in collection.products %}
+    {% render 'product-card', product_product: product %}
+  {% else %}
+    <p>There are no products inside this collection</p>
+  {% endfor %}
+{% endif %}
 
 {% schema %}
 {
