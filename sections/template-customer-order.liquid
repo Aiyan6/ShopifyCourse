@@ -30,26 +30,48 @@
             {% endif %}
           </div>
 
-          <h1 class="text-xl font-medium mb-4">{{ line_item.title | link_to: line_item.product.url }}</h1>
+          <div>
+            <h1 class="text-xl font-medium mb-4">{{ line_item.title | link_to: line_item.product.url }}</h1>
 
-          <table class="table-auto w-full mb-4">
-            <tbody>
-              <tr>
-                <td class="border border-gray-200 px-4 py-2">Price</td>
-                <td class="border border-gray-200 px-4 py-2">{{ line_item.original_price | money }}</td>
-              </tr>
+            <table class="table-auto w-full mb-4">
+              <tbody>
+                <tr>
+                  <td class="border border-gray-200 px-4 py-2">Price</td>
+                  <td class="border border-gray-200 px-4 py-2">{{ line_item.original_price | money }}</td>
+                </tr>
 
-              <tr>
-                <td class="border border-gray-200 px-4 py-2">Quantity</td>
-                <td class="border border-gray-200 px-4 py-2">{{ line_item.quantity }}</td>
-              </tr>
+                <tr>
+                  <td class="border border-gray-200 px-4 py-2">Quantity</td>
+                  <td class="border border-gray-200 px-4 py-2">{{ line_item.quantity }}</td>
+                </tr>
 
-              <tr>
-                <td class="border border-gray-200 px-4 py-2">Final price</td>
-                <td class="border border-gray-200 px-4 py-2">{{ line_item.final_line_price | money }}</td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td class="border border-gray-200 px-4 py-2">Final price</td>
+                  <td class="border border-gray-200 px-4 py-2">{{ line_item.final_line_price | money }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-gray-500 mb-4">
+              {{ line_item.product.description | truncatewords: 15 }}
+            </div>
+          </div>
+
+          <div>
+            <h1 class="font-medium mb-4">Delivery address</h1>
+            <div class="text-gray-500 mb-4">
+                <p>Address 1: {{ order.shipping_address.address1 }}</p>
+                <p>Address 2: {{ order.shipping_address.address2 }}</p>
+                <p>Street: {{ order.shipping_address.street }}</p>
+                <p>Province: {{ order.shipping_address.province }}</p>
+                <p>City: {{ order.shipping_address.city }} </p>
+                <p>ZIP: {{ order.shipping_address.zip }} </p>
+                <p>Country: {{ order.shipping_address.country }} </p>
+            </div>
+
+
+
+
+          </div>
         </div>
       </div>
     {% endfor %}
