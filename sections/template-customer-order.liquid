@@ -59,19 +59,40 @@
           <div>
             <h1 class="font-medium mb-4">Delivery address</h1>
             <div class="text-gray-500 mb-4">
-                <p>Address 1: {{ order.shipping_address.address1 }}</p>
-                <p>Address 2: {{ order.shipping_address.address2 }}</p>
-                <p>Street: {{ order.shipping_address.street }}</p>
-                <p>Province: {{ order.shipping_address.province }}</p>
-                <p>City: {{ order.shipping_address.city }} </p>
-                <p>ZIP: {{ order.shipping_address.zip }} </p>
-                <p>Country: {{ order.shipping_address.country }} </p>
+              <p>Address 1: {{ order.shipping_address.address1 }}</p>
+              <p>Address 2: {{ order.shipping_address.address2 }}</p>
+              <p>Street: {{ order.shipping_address.street }}</p>
+              <p>Province: {{ order.shipping_address.province }}</p>
+              <p>City: {{ order.shipping_address.city }}</p>
+              <p>ZIP: {{ order.shipping_address.zip }}</p>
+              <p>Country: {{ order.shipping_address.country }}</p>
             </div>
-
-
-
-
           </div>
+        </div>
+
+        <div class="p-4 md:p-12">
+          <h1 class="text-lg font-medium mb-4">Fulfillment</h1>
+
+          {% if line_item.successfully_fulfilled_quantity > 0 %}
+            <p class="mb-2">
+              We have fulfilled {{ line_item.successfully_fulfilled_quantity }} items of your recent order.
+            </p>
+            <p class="mb-2">Tracking company: {{ line_item.fulfillment.tracking_company }}</p>
+            <p class="mb-2">Tracking number: {{ line_item.fulfillment.tracking_number }}</p>
+
+            <a
+              target="_blank"
+              href="{{ line_item.fulfillment.tracking_url }}"
+              class="flex w-max text-sm text-white font-medium bg-gray-700 hover:bg-gray-900 px-4 py-1 rounded"
+            >
+              Track order
+              <span>
+                {% render 'link-icon' %}
+              </span>
+            </a>
+          {% else %}
+            <p class="text-gray-500">This item is not yet fulfilled.</p>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
