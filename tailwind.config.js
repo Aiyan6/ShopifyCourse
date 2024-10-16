@@ -9,7 +9,7 @@ module.exports = {
     "./templates/*.liquid",
   ],
   corePlugins: {
-    appearance: false,  // Disable appearance related styling (e.g., background-color: transparent)
+    preflight: false,  // Disable Tailwind's preflight (reset styles)
   },
   theme: {
     extend: {
