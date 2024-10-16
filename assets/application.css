@@ -877,6 +877,10 @@ video {
   height: 100vh;
 }
 
+.h-\[100vw\] {
+  height: 100vw;
+}
+
 .min-h-80 {
   min-height: 20rem;
 }
