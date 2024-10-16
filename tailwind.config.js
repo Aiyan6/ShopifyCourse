@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./layout/*.liquid",
@@ -8,20 +9,13 @@ module.exports = {
     "./templates/*.liquid",
   ],
   corePlugins: {
-    appearance: false,
+    appearance: false,  // Disable appearance related styling (e.g., background-color: transparent)
   },
   theme: {
     extend: {
       height: {
         '94': '22rem',
       },
-      colors: {
-        ivory: "#FFFFEF",
-        beige: "#F5F4DB",
-        white: "#FFF",
-        yellow: "#F7F59D",
-        gray: "#D6D5D3",
-      }
     },
   },
   plugins: [],
