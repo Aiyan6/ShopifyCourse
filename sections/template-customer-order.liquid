@@ -103,7 +103,6 @@
       <h1 class="ont-medium mb-4">Billing Address</h1>
 
       {{ order.billing_address | format_address }}
-
     </div>
     <div>
       <h1 class="font-medium mb-4">Payment information</h1>
@@ -111,17 +110,19 @@
       {% for transaction in order.transactions %}
         <div class="mb-4">
           {% assign credit_card_company = transaction.payment_details.credit_card_company %}
+          {% assign credit_card_last_four_digits = transaction.payment_details.credit_card_last_four_digits %}
 
           {% if credit_card_company %}
             <p>{{ credit_card_company }}</p>
-            
+            <p>{{ credit_card_last_four_digits }}</p>
+
+            <span class="bg-gray-700 rounded-full text-sm px-4 py-1 text-white">{{ transaction.status_label }}</span>
+
+          {% else %}
+            <p class="text-small mb-4">This order is manually placed by {{ shop.name }}</p>
           {% endif %}
-
         </div>
-        
       {% endfor %}
-
-
     </div>
     <div></div>
   </div>
