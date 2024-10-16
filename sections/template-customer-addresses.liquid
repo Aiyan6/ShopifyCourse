@@ -405,9 +405,9 @@
         var options = '';
         for (var index = 0; index < arrayOfProvince.length; index++) {
           if (arrayOfProvince[index][0] === provinceSelector.getAttribute('value')) {
-            options += `<option value="${arrayOfProvince[i][0]}" selected>${arrayOfProvince[index][0]}</option>`;
+            options += `<option value="${arrayOfProvince[index][0]}" selected>${arrayOfProvince[index][0]}</option>`;
           } else {
-            options += `<option value="${arrayOfProvince[i][0]}">${arrayOfProvince[index][0]}</option>`;
+            options += `<option value="${arrayOfProvince[index][0]}">${arrayOfProvince[index][0]}</option>`;
           }
         }
         provinceSelector.innerHTML = options;
