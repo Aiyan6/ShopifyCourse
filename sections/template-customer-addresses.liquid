@@ -9,7 +9,7 @@
       <div class="relative max-w-md mx-auto bg-white border top-20 p-4">
           <div class="flex items-center justify-between mb-4">
               <h2 class="text-lg font-medium">New address</h2>
-              <button x-on:click="new_address = false" class="text-gray-500">{% render 'icon-close' %}</button>
+              <button x-on:click="new_address = false" class="text-gray-500">{% render 'close-icon' %}</button>
           </div>
 
           {% form 'customer_address', customer.new_address %}
@@ -159,7 +159,7 @@
       {% endpaginate %}
   </div>
 </div>
-</div>
+
 <script>
   class CustomerAddress {
       constructor() {
