@@ -191,7 +191,12 @@
                 >
                   Edit
                 </button>
-                <button class="w-full text-xs font-medium text-gray-700 border py-2">Delete</button>
+                <button
+                  data-delete-address
+                  class="w-full text-xs font-medium text-gray-700 border py-2"
+                >
+                  Delete
+                </button>
               </div>
             </div>
 
@@ -374,6 +379,13 @@
       this.initCustomerAddress();
       this.customerAddressesSelector();
     }
+
+    initDeleteAddressButtons() {
+      const deleteButtons = document.querySelectorAll("button[data-delete-address]");
+      coonsole.log(deleteButtons);
+    }
+
+
     initCustomerAddress() {
       const allAddressesSelector = document.querySelectorAll('select[data-country-selector]');
       if (allAddressesSelector.length < 1) return;
