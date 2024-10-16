@@ -881,6 +881,10 @@ video {
   min-height: 20rem;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-1\/2 {
   width: 50%;
 }
