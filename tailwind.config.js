@@ -7,6 +7,9 @@ module.exports = {
     "./templates/customers/*.liquid",
     "./templates/*.liquid",
   ],
+  corePlugins: {
+    appearance: false,
+  },
   theme: {
     extend: {
       height: {
