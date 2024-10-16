@@ -193,11 +193,16 @@
                 </button>
                 <button
                   data-delete-address
+                  data-url="{{ address.url }}"
                   class="w-full text-xs font-medium text-gray-700 border py-2"
                 >
                   Delete
                 </button>
               </div>
+
+              <form method="post" action="{{ address.url }}">
+                <input type="hidden" name="_method" value="delete">
+              </form>
             </div>
 
             <div
@@ -384,14 +389,14 @@
     initDeleteAddressButtons() {
       const deleteButtons = document.querySelectorAll('button[data-delete-address]');
 
-      if(deleteButtons.length < 1) return;
+      if (deleteButtons.length < 1) return;
 
-      deleteButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          console.log("It's working");
-        })
-      })
-
+      deleteButtons.forEach((button) => {
+        button.addEventListener('click', function (e) {
+          var url = this.dataset.url;
+          document.querySelector(`form[action="${url}"]`).submit();
+        });
+      });
     }
 
     initCustomerAddress() {
