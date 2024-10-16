@@ -8,9 +8,7 @@ module.exports = {
     "./templates/customers/*.liquid",
     "./templates/*.liquid",
   ],
-  corePlugins: {
-    preflight: false,  // Disable Tailwind's preflight (reset styles)
-  },
+
   theme: {
     extend: {
       height: {
