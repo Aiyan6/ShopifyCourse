@@ -382,10 +382,17 @@
     }
 
     initDeleteAddressButtons() {
-      const deleteButtons = document.querySelectorAll("button[data-delete-address]");
-      console.log(deleteButtons);
-    }
+      const deleteButtons = document.querySelectorAll('button[data-delete-address]');
 
+      if(deleteButtons.length < 1) return;
+
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          console.log("It's working");
+        })
+      })
+
+    }
 
     initCustomerAddress() {
       const allAddressesSelector = document.querySelectorAll('select[data-country-selector]');
