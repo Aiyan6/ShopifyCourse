@@ -9,20 +9,17 @@ kaboom({
 
 let player;
 
-// Function to get URL query parameters
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
 
-// Function to set Mario sprite based on query parameter
-// Function to set Mario sprite based on query parameter
 function setMarioSpriteFromQuery() {
   const marioParam = getQueryParam("mario");
-  if (marioParam === "moemen") {
-    loadSprite("mario", "https://i.imgur.com/cV3eMk7.png");
+  if (marioParam === "andrew") {
+    loadSprite("mario", "https://i.imgur.com/DVrAJUK.png");
   } else {
-    loadSprite("mario", "https://i.imgur.com/Wb1qfhK.png"); // Default Mario sprite
+    loadSprite("mario", "https://i.imgur.com/Wb1qfhK.png");
   }
 }
 
@@ -31,16 +28,14 @@ function setEvilMushroomSpriteFromQuery() {
   if (evilMushroomParam === "aiyan") {
     loadSprite("evil-mushroom", "https://i.imgur.com/qafHsCN.png");
   } else {
-    loadSprite("evil-mushroom", "https://i.imgur.com/KPO3fR9.png"); // Default Mario sprite
+    loadSprite("evil-mushroom", "https://i.imgur.com/KPO3fR9.png");
   }
 }
 
-// Event listener to change sprite on button click
 document.addEventListener("DOMContentLoaded", () => {
   setMarioSpriteFromQuery();
   setEvilMushroomSpriteFromQuery();
 });
-
 
 let MOVE_SPEED = 120; //sets difficulty
 const JUMP_FORCE = 400;
@@ -270,9 +265,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
       destroy(d);
       score = score + 5;
     } else {
-      play("die");
-      go("lose", { score: scoreLabel.value, level: level });
-      destroy(player);
+      go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 })
     }
   });
 
@@ -301,8 +294,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
   player.action(() => {
     camPos(player.pos); // with camPos we set camera position to follow mario
     if (player.pos.y >= FALL_DEATH) {
-      play("die");
-      go("lose", { score: scoreLabel.value, level: level });
+        go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 })
     }
   });
 
@@ -330,21 +322,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
 });
 
 scene("lose", ({ score, level }) => {
-  level = level + 1;
-  keyPress("space", () => {
-    go("menu");
-  });
-  add([
-    text(
-      `Game Over! Your score: ${score} 
-You reached level: ${level}
-    
-press SPACE to play again.`,
-      16
-    ),
-    origin("center"),
-    pos(width() / 2, height() / 2),
-  ]);
+  go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 });
 });
 //lets try to make a MENU
 scene("menu", () => {
@@ -438,6 +416,6 @@ scene("dificultySelection", () => {
   });
 });
 
-start("menu");
+// start("menu");
 
-// start("game", { level: 0, score: 0 });
+start("game", { level: 0, score: 0, mov_speed: 240, en_speed: 80 });
