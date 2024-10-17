@@ -1,4 +1,5 @@
 kaboom({
+    root: document.getElementById("game-container"),
     global: true,
     fullscreen: true,
     scale: 2,

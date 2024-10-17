@@ -1,5 +1,9 @@
-<script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
-<script src="{{ 'game.js' | asset_url }}"></script>
+<script src="https://kaboomjs.com/lib/0.5.0/kaboom.js" defer></script>
+<script src="{{ 'game.js' | asset_url }}" defer></script>
+
+<div id="game-container" class="w-full">
+
+</div>
 
 {% schema %}
 {
@@ -12,3 +16,4 @@
   ]
 }
 {% endschema %}
+
