@@ -15,15 +15,6 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-// Function to resume the audio context when needed (like on touch events)
-function touchStarted() {
-  if (audioContext.state === "suspended") {
-    audioContext.resume();
-  }
-}
-
 // Function to set Mario sprite based on query parameter
 // Function to set Mario sprite based on query parameter
 function setMarioSpriteFromQuery() {
@@ -47,17 +38,9 @@ function setEvilMushroomSpriteFromQuery() {
 // Event listener to change sprite on button click
 document.addEventListener("DOMContentLoaded", () => {
   setMarioSpriteFromQuery();
-});
-
-// Event listener to change sprite on button click
-document.addEventListener("DOMContentLoaded", () => {
   setEvilMushroomSpriteFromQuery();
 });
 
-// Event listener to change sprite on button click
-document.addEventListener("DOMContentLoaded", () => {
-  touchStarted();
-});
 
 let MOVE_SPEED = 120; //sets difficulty
 const JUMP_FORCE = 400;
