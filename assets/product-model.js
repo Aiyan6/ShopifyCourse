@@ -28,7 +28,9 @@ class ProductModel extends HTMLElement {
       const template = document.querySelector(
         `product-model[data-media-id="${mediaID}"] > template`
       );
-      console.log(template);
+      const clone = template.content.cloneNone(true);
+      modal.querySelector("#body").appendChild(clone);
+      modal.querySelector("#body > model-viewer").setAttribute("reveal", "auto");
     });
   }
 }
