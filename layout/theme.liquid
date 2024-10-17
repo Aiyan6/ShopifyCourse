@@ -8,7 +8,6 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <meta name="referrer" content="no-referrer">
-    <link rel="stylesheet" href="style.css">
     {{ content_for_header }}
     <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
@@ -24,8 +23,7 @@
   </head>
   <body>
     {% section 'header' %}
-    <script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
-    <script src="game.js"></script>
+
     <main role="main">
       {{ content_for_layout }}
     </main>
