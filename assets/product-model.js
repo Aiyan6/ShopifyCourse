@@ -10,16 +10,24 @@ class ProductModel extends HTMLElement {
   }
 
   getModal() {
-    const modal = document.getElementById("productModalModal");
+    const modal = document.getElementById("productModelModal");
     return modal;
-
   }
 
   openModalModal() {
     const mediaID = this.getMediaID();
     const modal = this.getModal();
 
-    console.log(modal);
+    if (!mediaID) return;
+    const openModalButton = this.querySelector(
+      `button[id=productModalOpenButton_${mediaID}`
+    );
+
+    openModalButton.addEventListener("click", function (e) {
+      modal.querySelector("#body").innerHTML = "";
+      const template = document.querySelector(`product-model[data-media-id=${mediaID }] > template`);
+      console.log(template);
+    });
   }
 }
 
