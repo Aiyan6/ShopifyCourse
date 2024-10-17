@@ -7,8 +7,6 @@ kaboom({
   clearColor: [0, 0, 0, 1],
 });
 
-
-
 let player;
 
 // Function to get URL query parameters
@@ -21,7 +19,7 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 // Function to resume the audio context when needed (like on touch events)
 function touchStarted() {
-  if (audioContext.state === 'suspended') {
+  if (audioContext.state === "suspended") {
     audioContext.resume();
   }
 }
@@ -38,13 +36,13 @@ function setMarioSpriteFromQuery() {
 }
 
 function setEvilMushroomSpriteFromQuery() {
-    const evilMushroomParam = getQueryParam("evil-mushroom");
-    if (evilMushroomParam === "aiyan") {
-      loadSprite("evil-mushroom", "https://i.imgur.com/qafHsCN.png");
-    } else {
-      loadSprite("evil-mushroom", "https://i.imgur.com/KPO3fR9.png"); // Default Mario sprite
-    }
+  const evilMushroomParam = getQueryParam("evil-mushroom");
+  if (evilMushroomParam === "aiyan") {
+    loadSprite("evil-mushroom", "https://i.imgur.com/qafHsCN.png");
+  } else {
+    loadSprite("evil-mushroom", "https://i.imgur.com/KPO3fR9.png"); // Default Mario sprite
   }
+}
 
 // Event listener to change sprite on button click
 document.addEventListener("DOMContentLoaded", () => {
@@ -53,13 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Event listener to change sprite on button click
 document.addEventListener("DOMContentLoaded", () => {
-    setEvilMushroomSpriteFromQuery();
-  });
+  setEvilMushroomSpriteFromQuery();
+});
 
 // Event listener to change sprite on button click
 document.addEventListener("DOMContentLoaded", () => {
-    touchStarted();
-  });
+  touchStarted();
+});
 
 let MOVE_SPEED = 120; //sets difficulty
 const JUMP_FORCE = 400;
@@ -69,10 +67,22 @@ const FALL_DEATH = 400;
 let isJumping;
 let current_jump_force = JUMP_FORCE;
 
-loadSound('jump', "https://raw.githubusercontent.com/dtellz/mario-browser-game/main/docs/sounds/smb_jump-small.wav");
-loadSound('getCoin', 'https://raw.githubusercontent.com/dtellz/mario_game/main/docs/sounds/smb_coin.wav');
-loadSound('die', 'https://raw.githubusercontent.com/dtellz/mario_game/main/docs/sounds/smb_mariodie.wav');
-loadSound('gameOver', 'https://raw.githubusercontent.com/dtellz/mario_game/main/docs/sounds/smb_gameover.wav');
+loadSound(
+  "jump",
+  "https://raw.githubusercontent.com/dtellz/mario-browser-game/main/docs/sounds/smb_jump-small.wav"
+);
+loadSound(
+  "getCoin",
+  "https://raw.githubusercontent.com/dtellz/mario_game/main/docs/sounds/smb_coin.wav"
+);
+loadSound(
+  "die",
+  "https://raw.githubusercontent.com/dtellz/mario_game/main/docs/sounds/smb_mariodie.wav"
+);
+loadSound(
+  "gameOver",
+  "https://raw.githubusercontent.com/dtellz/mario_game/main/docs/sounds/smb_gameover.wav"
+);
 
 loadSprite("coin", "https://i.imgur.com/wbKxhcd.png");
 loadSprite("evil-mushroom", "https://i.imgur.com/KPO3fR9.png");
@@ -277,7 +287,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
       destroy(d);
       score = score + 5;
     } else {
-      play('die');
+      play("die");
       go("lose", { score: scoreLabel.value, level: level });
       destroy(player);
     }
@@ -289,7 +299,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
   });
   player.collides("coin", (c) => {
     destroy(c);
-    play('getCoin'); 
+    play("getCoin");
     scoreLabel.value++; //mario earns cash on hitting coins
     scoreLabel.text = scoreLabel.value;
   });
@@ -308,7 +318,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
   player.action(() => {
     camPos(player.pos); // with camPos we set camera position to follow mario
     if (player.pos.y >= FALL_DEATH) {
-      play('die');
+      play("die");
       go("lose", { score: scoreLabel.value, level: level });
     }
   });
@@ -329,7 +339,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
   });
   keyPress("space", () => {
     if (player.grounded()) {
-      play('jump'); 
+      play("jump");
       isJumping = true;
       player.jump(current_jump_force);
     }
