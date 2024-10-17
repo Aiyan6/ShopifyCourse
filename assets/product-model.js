@@ -2,6 +2,16 @@ class ProductModel extends HTMLElement {
   constructor() {
     super();
     this.openModalModal();
+    this.addEventListener("click", this.loadContent());
+  }
+
+  loadContent() {
+    Shopify.loadFeatures([
+      {
+        name: "model-viewer-ui",
+        version: "1.0 ",
+      },
+    ]);
   }
 
   getMediaID() {
@@ -30,7 +40,9 @@ class ProductModel extends HTMLElement {
       );
       const clone = template.content.cloneNode(true);
       modal.querySelector("#body").appendChild(clone);
-      modal.querySelector("#body > model-viewer").setAttribute("reveal", "auto");
+      modal
+        .querySelector("#body > model-viewer")
+        .setAttribute("reveal", "auto");
     });
   }
 }
