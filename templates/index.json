@@ -2,11 +2,10 @@
   "sections": {
     "mario-game": {
       "type": "mario-game"
-
     },
     "featured-collection": {
       "type": "featured-collection"
     }
   },
-  "order": ["mario-game", "featured-collection"]
+  "order": ["featured-collection"]
 }

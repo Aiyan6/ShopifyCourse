@@ -265,7 +265,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
       destroy(d);
       score = score + 5;
     } else {
-      go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 })
+      go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 });
     }
   });
 
@@ -294,7 +294,7 @@ loadSprite('blue-surprise', 'RMqCc1G.png')
   player.action(() => {
     camPos(player.pos); // with camPos we set camera position to follow mario
     if (player.pos.y >= FALL_DEATH) {
-        go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 })
+      go("game", { level: 0, score: 0, mov_speed: 120, en_speed: 30 });
     }
   });
 
